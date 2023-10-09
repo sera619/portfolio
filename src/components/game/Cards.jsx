@@ -6,7 +6,7 @@ import Joyride from 'react-joyride';
 import { introSteps } from "../../constants";
 
 
-export default function Cards(){
+export default function Cards() {
     const [items, setItems] = useState(
         gameElements.sort(() => Math.random() - 0.5))
     const [prev, setPrev] = useState(-1);
@@ -17,64 +17,64 @@ export default function Cards(){
         return storedHighscore ? parseInt(storedHighscore, 10) : 0;
     });
 
-    const [{run, steps}, setSteps] = useState({
-        run:false,
-        steps:introSteps.gameSteps
+    const [{ run, steps }, setSteps] = useState({
+        run: false,
+        steps: introSteps.gameSteps
     })
-    
+
     useEffect(() => {
         localStorage.setItem('highscore', highscore.toString())
     }, [highscore]);
 
-    const resetGame = () => {      
+    const resetGame = () => {
         setMoves(0);
         setItems(gameElements.sort(() => Math.random() - 0.5));
-        for(let i = 0; i < items.length; i++){
+        for (let i = 0; i < items.length; i++) {
             items[i].stat = "show"
         }
         setTimeout(() => {
             let ele = document.querySelectorAll('.show')
-            for(let i = 0; i < items.length; i++){
+            for (let i = 0; i < items.length; i++) {
                 items[i].stat = ""
             }
-            for(let j = 0; j < ele.length; j++){
+            for (let j = 0; j < ele.length; j++) {
                 ele[j].classList.remove('show');
                 ele[j].classList.remove('active');
             }
         }, 1500)
     }
 
-    function resetHighscore(){
+    function resetHighscore() {
         setHighscore(0)
         alert("Highscore successfully cleared!");
     }
 
-    function isWin(){
-        for(let i = 0; i < items.length; i++){
-            if(items[i].stat !== "correct"){
+    function isWin() {
+        for (let i = 0; i < items.length; i++) {
+            if (items[i].stat !== "correct") {
                 return false;
             }
         }
-        if(highscore > moves || highscore === 0){
+        if (highscore > moves || highscore === 0) {
             setHighscore(moves);
         }
         return true;
     }
 
-    function check(current){     
-        setMoves(moves + 1);   
-        if(items[current].id == items[prev].id){
+    function check(current) {
+        setMoves(moves + 1);
+        if (items[current].id == items[prev].id) {
             items[current].stat = "correct"
             items[prev].stat = "correct"
             setItems([...items])
             setPrev(-1)
-            if(isWin()){
+            if (isWin()) {
                 setTimeout(() => {
                     alert("Congratulation!\nYou win the game!");
 
                 }, 1500)
             };
-        }else{
+        } else {
             items[current].stat = "wrong"
             items[prev].stat = "wrong"
             setItems([...items])
@@ -89,40 +89,40 @@ export default function Cards(){
         }
     }
 
-    function handleClick(id){
-        if(prev === -1){
+    function handleClick(id) {
+        if (prev === -1) {
             items[id].stat = "active"
             setItems([...items])
             setPrev(id)
-        }else{
-            
+        } else {
+
             check(id)
         }
     }
 
-    function handleHelpCLick(){
-        setSteps({run: true, steps});
+    function handleHelpCLick() {
+        setSteps({ run: true, steps });
     }
     const gameIntroSeen = localStorage.getItem("gameIntroSeen");
     useEffect(() => {
-        if(!gameIntroSeen){
+        if (!gameIntroSeen) {
             handleHelpCLick();
             localStorage.setItem("gameIntroSeen", "true");
         }
     }, [])
 
 
-    return(
+    return (
         <>
-        <Joyride
+            <Joyride
                 steps={steps}
                 scrollToFirstStep
-                continuous={true} 
+                continuous={true}
                 showProgress
                 showSkipButton
                 run={run}
                 styles={{
-                    options:{
+                    options: {
                         backgroundColor: '#3333335e',
                         textColor: '#3bc7eb',
                         primaryColor: '#3bc7eb',
@@ -131,31 +131,29 @@ export default function Cards(){
                         beaconSize: 54,
                     }
                 }}
-                />
-        <div className='flex m-auto justify-center align-center w-full z-20'>
-        <div className="max-w-100 my-5 flex flex-col sm:flex-row rounded-md shadow-sm text-center">
-            <button id="step-2" onClick={resetGame} 
-            className={"border-1 px-5 py-2 my-1 sm:my-0 sm:mx-1 rounded duration-150 hover:border-[#00eeff] hover:text-[#00eeff] active:bg-[#00eeff] active:text-white"}>
-            Restart</button>
-            <button id="step-3" onClick={()=> resetHighscore()} 
-            className={"border-1 px-5 py-2 my-1 sm:my-0 sm:mx-1  rounded duration-150 hover:border-[#ff0000] hover:text-[#ff0000] active:bg-[#ff0000] active:text-white"}>Delete
-            </button>
-            <Link id="step-4" to={"/portfolio/"} 
-            className={"border-1 px-5 py-2 my-1 sm:my-0 sm:mx-1  rounded duration-150 hover:border-[#00eeff] hover:text-[#00eeff] active:bg-[#00eeff] active:text-white"}>Home</Link>
-            <button id="step-5" onClick={() => handleHelpCLick()} 
-            className={"border-1 px-5 py-2 my-1 sm:my-0 sm:mx-1  rounded duration-150 hover:border-[#00eeff] hover:text-[#00eeff] active:bg-[#00eeff] active:text-white"}>?</button>
-        </div>
-        </div>
+            />
+            <div className='flex m-auto justify-center align-center w-full z-20'>
+                <div className="max-w-100 my-5 flex flex-col sm:flex-row rounded-md shadow-sm text-center">
+                    <button id="step-2" onClick={resetGame}
+                        className={"border-1 px-5 py-2 my-1 sm:my-0 sm:mx-1 rounded duration-150 hover:border-[#00eeff] hover:text-[#00eeff] active:bg-[#00eeff] active:text-white"}>
+                        Restart</button>
+                    <button id="step-3" onClick={() => resetHighscore()}
+                        className={"border-1 px-5 py-2 my-1 sm:my-0 sm:mx-1  rounded duration-150 hover:border-[#ff0000] hover:text-[#ff0000] active:bg-[#ff0000] active:text-white"}>Delete
+                    </button>
+                    <Link id="step-4" to={"/portfolio/"}
+                        className={"border-1 px-5 py-2 my-1 sm:my-0 sm:mx-1  rounded duration-150 hover:border-[#00eeff] hover:text-[#00eeff] active:bg-[#00eeff] active:text-white"}>Home</Link>
+                    <button id="step-5" onClick={() => handleHelpCLick()}
+                        className={"border-1 px-5 py-2 my-1 sm:my-0 sm:mx-1  rounded duration-150 hover:border-[#00eeff] hover:text-[#00eeff] active:bg-[#00eeff] active:text-white"}>?</button>
+                </div>
+            </div>
             {/* <p className="text-[#00ff00] text-[23px] mb-0">{winMessage.toString()}</p> */}
             <p id="step-1" className="text-[#00ff00] mb-1 pb-1">Moves: <span classList={"text-primary"}>{moves}</span>&nbsp;&#9122;&nbsp;Record: {highscore}</p>
-        
-        <div id="step-0" className="card-container">
-            { items.map((item, index) => (
-                <GameCard key={index} item={item} id={index} handleClick={handleClick} />
-            )) }
 
-        </div>
-       
+            <div id="step-0" className="card-container">
+                {items.map((item, index) => (
+                    <GameCard key={index} item={item} id={index} handleClick={handleClick} />
+                ))}
+            </div>
         </>
     )
 }
