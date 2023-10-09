@@ -95,7 +95,6 @@ export default function Cards(){
         if(highscore > moves || highscore === 0){
             setHighscore(moves);
         }
-        setWinMessage(`You win the game with '${moves}' moves!`)            
         return true;
     }
 
@@ -105,7 +104,9 @@ export default function Cards(){
             items[prev].stat = "correct"
             setItems([...items])
             setPrev(-1)
-            isWin();
+            if(isWin()){
+                alert("You win the game")
+            };
         }else{
             items[current].stat = "wrong"
             items[prev].stat = "wrong"
@@ -148,7 +149,7 @@ export default function Cards(){
         <>
         <div className='flex m-auto justify-center align-center w-full z-20'>
         <div className="max-w-100 my-5 flex flex-row rounded-md shadow-sm text-center">
-            <button id="step-2" onClick={()=> resetGame()} className={"border-1 px-5 py-2 mx-2 rounded duration-150 hover:border-[#00eeff] hover:text-[#00eeff] active:bg-[#00eeff] active:text-white"}>
+            <button id="step-2" onClick={resetGame} className={"border-1 px-5 py-2 mx-2 rounded duration-150 hover:border-[#00eeff] hover:text-[#00eeff] active:bg-[#00eeff] active:text-white"}>
             Restart</button>
             <button id="step-3" onClick={()=> resetHighscore()} className={"border-1 px-5 py-2 mx-2 rounded duration-150 hover:border-[#ff0000] hover:text-[#ff0000] active:bg-[#ff0000] active:text-white"}>Delete
             </button>
