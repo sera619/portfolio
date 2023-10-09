@@ -4,7 +4,7 @@ import Joyride from 'react-joyride';
 
 export default function Home() {
     const [{run, steps}, setSteps] = useState({
-        run: true,
+        run: false,
         steps:[
             {
                 content: (
