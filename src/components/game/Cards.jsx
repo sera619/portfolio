@@ -63,7 +63,7 @@ export default function Cards(){
     }, [highscore]);
 
     const resetGame = () => {
-        setWinMessage("Playing...");
+      
         setMoves(0);
         setItems(gameElements.sort(() => Math.random() - 0.5));
         for(let i = 0; i < items.length; i++){
@@ -105,7 +105,10 @@ export default function Cards(){
             setItems([...items])
             setPrev(-1)
             if(isWin()){
-                alert("You win the game")
+                setTimeout(() => {
+                    alert("Congratulation!\nYou win the game!");
+
+                }, 1500)
             };
         }else{
             items[current].stat = "wrong"
