@@ -26,11 +26,10 @@ const SocialBar = () => {
 
             <motion.div variants={slideIn("right", "tween", 0.2, 1)} className="flex mt-15 justify-center align-center text-center">
 
-                <ul className="w-full">
+                <ul className="w-full mx-10">
                     {socialLinks.map((link) => (
-                        <li key={link.id} className="mx-auto w-3/4 px-20 my-5 ">
+                        <li key={link.id} className="mx-10  px-20 my-5 ">
                             <div className="menubtn px-2 py-4 text-center"
-
                                 onClick={() => openLink(link.link)}>
                                 {link.title}&nbsp;
                                 <span></span>
@@ -41,7 +40,7 @@ const SocialBar = () => {
                             </div>
                         </li>
                     ))}
-                    <li key={"home-btn"} className="mx-auto w-3/4 px-20 my-5">
+                    <li key={"home-btn"} className="mx-10 px-20 my-5">
                         <div className="menubtn px-2 py-4 text-center  "
                             onClick={() => window.open('/portfolio/', "_self")}>
                             Home

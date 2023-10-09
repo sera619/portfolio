@@ -234,6 +234,7 @@ body:hover #cursor{
 }
 
 #game-bg{
+  height: 100%;
   background-image: url(./assets/bg.jpeg);
   background-repeat: no-repeat;
   background-position: center;
