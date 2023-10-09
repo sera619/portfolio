@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { gameElements } from "../../constants"
 import GameCard from "./GameCard";
 import Joyride from 'react-joyride';
+import { introSteps } from "../../constants";
+
 
 export default function Cards(){
     const [items, setItems] = useState(
@@ -17,53 +19,14 @@ export default function Cards(){
 
     const [{run, steps}, setSteps] = useState({
         run:false,
-        steps:[
-            {
-                target: '#step-0',
-                placement: 'top',
-                title: "Welcome!",
-                spotlightPadding:20,
-                disableOverlayClose: true,
-                hideCloseButton: true,
-                disableBeacon: true,
-                spotlightClicks: true,
-                locale: {open:"Start the Intro-Tour!"},
-                content: 'Welcome to the memory Game!\nJust click the blue buttons to start.'
-            },
-            {
-                target:'#step-1',
-                title: 'Gamestats',
-                content: 'Here you can see your current move count and your highscore.',
-            },
-            {
-                target: '#step-2',
-                title: 'Restart Game',
-                content: 'Click this button to restart the game anytime!',
-            },
-            {
-                target: '#step-3',
-                title: 'Reset Highscore',
-                content: 'Click here to DELETE the saved highscore',
-            },
-            {
-                target: '#step-4',
-                title: 'Back',
-                content: 'Finally if you dont want play anymore click here to go back to menu.'
-            },
-            {
-                target: '#step-5',
-                title: 'Help',
-                content: 'Click here to show this tour again!\nHave fun to play!'
-            }
-        ]
+        steps:introSteps.game
     })
     
     useEffect(() => {
         localStorage.setItem('highscore', highscore.toString())
     }, [highscore]);
 
-    const resetGame = () => {
-      
+    const resetGame = () => {      
         setMoves(0);
         setItems(gameElements.sort(() => Math.random() - 0.5));
         for(let i = 0; i < items.length; i++){
@@ -98,7 +61,8 @@ export default function Cards(){
         return true;
     }
 
-    function check(current){        
+    function check(current){     
+        setMoves(moves + 1);   
         if(items[current].id == items[prev].id){
             items[current].stat = "correct"
             items[prev].stat = "correct"
@@ -131,7 +95,7 @@ export default function Cards(){
             setItems([...items])
             setPrev(id)
         }else{
-            setMoves(moves + 1);
+            
             check(id)
         }
     }

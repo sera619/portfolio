@@ -1,48 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Joyride from 'react-joyride';
+import { introSteps } from "../constants";
+
 
 export default function Home() {
     const [{run, steps}, setSteps] = useState({
         run: false,
-        steps:[
-            {
-                content: (
-                    <div><h1 className={"text-bold uppercase"}>Hello!</h1>Welcome this is a small showcase!
-                    </div>
-                ),
-                target: '#step-0',
-                placement: 'top',
-                title: "Welcome!",
-                spotlightPadding:20,
-                disableOverlayClose: true,
-                hideCloseButton: true,
-                disableBeacon: true,
-                spotlightClicks: true,
-                locale: {open:"Start the Intro-Tour!"}
-            },
-            {
-                content: "Click here to see my Portfolio!",
-                target: '#step-1',
-                placement: 'bottom',
-                hideCloseButton: true,
-
-            },
-            {
-                content: "Click here to see play a nice memory game!",
-                target: '#step-2',
-                placement: 'top',
-                hideCloseButton: true,
-
-            },
-            {
-                content: "Finally you can restart this small intro tour.",
-                target: '#step-3',
-                placement: 'bottom',
-                hideCloseButton: true,
-
-            },
-        ]
+        steps:introSteps.home
     })
 
     const handleIntroButtonClick = () => {
