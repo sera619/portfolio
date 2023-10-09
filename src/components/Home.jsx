@@ -82,7 +82,7 @@ export default function Home() {
 
                 <Link
                     id="step-1"
-                    to={"/portfolio-vite/portfolio"}
+                    to={"/portfolio/portfolio"}
                     className="menubtn py-3 my-2 px-20 relative"
                 >
                     Portfolio
@@ -96,7 +96,7 @@ export default function Home() {
 
                 <Link
                     id="step-2"
-                    to={"/portfolio-vite/game"}
+                    to={"/portfolio/game"}
                     className="menubtn py-3 my-2 px-20 relative"
                 >
                     Game

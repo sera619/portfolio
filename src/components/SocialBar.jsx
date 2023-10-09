@@ -43,7 +43,7 @@ const SocialBar = () => {
                     ))}
                     <li key={"home-btn"} className="mx-auto w-3/4 px-20 my-5">
                         <div className="menubtn px-2 py-4 text-center  "
-                            onClick={() => window.open('/portfolio-vite/', "_self")}>
+                            onClick={() => window.open('/portfolio/', "_self")}>
                             Home
                             <span></span>
                             <span></span>

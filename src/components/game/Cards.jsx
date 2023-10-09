@@ -152,7 +152,7 @@ export default function Cards(){
             Restart</button>
             <button id="step-3" onClick={()=> resetHighscore()} className={"border-1 px-5 py-2 mx-2 rounded duration-150 hover:border-[#ff0000] hover:text-[#ff0000] active:bg-[#ff0000] active:text-white"}>Delete
             </button>
-            <Link id="step-4" to={"/portfolio-vite/"} className={"border-1 px-5 py-2 mx-2 rounded duration-150 hover:border-[#00eeff] hover:text-[#00eeff] active:bg-[#00eeff] active:text-white"}>Home</Link>
+            <Link id="step-4" to={"/portfolio/"} className={"border-1 px-5 py-2 mx-2 rounded duration-150 hover:border-[#00eeff] hover:text-[#00eeff] active:bg-[#00eeff] active:text-white"}>Home</Link>
             <button id="step-5" onClick={handleHelpCLick} className={"border-1 px-5 py-2 mx-2 rounded duration-150 hover:border-[#00eeff] hover:text-[#00eeff] active:bg-[#00eeff] active:text-white"}>?</button>
         </div>
         </div>
