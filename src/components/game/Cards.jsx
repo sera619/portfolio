@@ -19,7 +19,7 @@ export default function Cards(){
 
     const [{run, steps}, setSteps] = useState({
         run:false,
-        steps:introSteps.game
+        steps:introSteps.gameSteps
     })
     
     useEffect(() => {

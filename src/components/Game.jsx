@@ -3,7 +3,7 @@ import Cards from './game/Cards';
 
 export default function Game() {
     return(
-        <section id="game-bg" className="w-full h-screen justify-center align-center text-center z-0">
+        <section id="game-bg" className="w-full min-h-screen justify-center align-center text-center z-0">
             <div className='flex mx-auto justify-center align-center w-full z-0 bg-transparent'>
                 <div className="max-w-xs my-5 flex flex-col rounded-md shadow-sm text-center">
                     <div className="block  text-center">
