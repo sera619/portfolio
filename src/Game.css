@@ -31,8 +31,10 @@
 
 
 .card{
-    max-width: 10vh;
-    max-height: 10vh;
+    width: 11vh;
+    height: 11vh;
+    /* max-width: 5em;
+    max-height: 5em; */
     background-color: #fff;
     display: flex;
     justify-content: center;
