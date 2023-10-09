@@ -1,0 +1,350 @@
+:root {
+  --bg-color: #111;
+  --test: #3333335e;
+  --pcolor: #0f0;
+  --color-red-gradient-start: #00eeff09;
+  --color-red-gradient-mid: #00eeff2d;
+  --color-red-gradient-end: #00eeff;
+  --text-color-btn: #08c7d4;
+  --color-gradient-start: var(--color-red-gradient-start);
+  --color-gradient-mid: var(--color-red-gradient-mid);
+  --color-gradient-end: var(--color-red-gradient-end);
+}
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-color);
+  /* display: flex;
+  justify-content: center;
+  align-items: center; 
+  cursor: none;
+  */
+  color: #aaa6c3;
+}
+
+.line-anim {
+  border: none;
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(to right, transparent 0%, var(--color-gradient-start) 5%, var(--color-gradient-mid) 75%, var(--color-gradient-end) 100%);
+  margin: 20px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+
+.line-anim::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to right, var(--color-gradient-start) 0%, var(--color-gradient-mid) 75%, var(--color-gradient-end) 100%);
+  animation: line-move 4s linear infinite;
+}
+
+@keyframes line-move {
+  0% {
+      transform: translateX(-100%);
+  }
+  100% {
+      transform: translateX(100%);
+  }
+}
+
+/* .zero-container{
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.zero-container .zero-circle {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+}
+
+.zero-container .zero-circle:nth-child(2) {
+  transform: translate(-25%, -25%) rotateX(180deg);
+  filter: hue-rotate(60deg);
+}
+.zero-container .zero-circle:nth-child(3) {
+  transform: translate(25%, 25%) rotateX(180deg);
+  filter: hue-rotate(260deg);
+}
+
+.zero-container .zero-circle::before {
+  content: '';
+  position:  absolute;
+  width: 20px;
+  height: 20px;
+  background: #0f0;
+  box-shadow: 0 0 0 8px #0f03, 0 0 0 15px #0f01;
+  animation: zeroCircle 4s linear infinite;
+}
+@keyframes zeroCircle {
+  0%, 100%{
+    transform: translate(2px, 2px);
+  }
+  25% {
+    transform: translate(278px, 2px);
+  }
+  50%{
+    transform: translate(278px, 278px);
+
+  }
+  75% {
+    transform: translate(2px, 278px);
+  }
+}
+
+.zero-container .zero-circle span {
+  position: absolute;
+  inset: 10px;
+  overflow: hidden;
+  transform: rotate(calc(90deg * var(--i)));
+}
+
+.zero-container .zero-circle span::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  background-color: #0f0;
+  transform: translateX(-100%);
+  animation: zero 4s linear infinite;
+  animation-delay: calc(1s * var(--i));
+}
+
+@keyframes zero {
+  0%{
+    transform: translateX(-100%);
+  }
+  50%, 100% {
+    transform: translateX(100%);
+  }
+}
+*/
+#cursor {
+  font-family: 'Poppins', sans-serif;
+  position: fixed;
+  width: 15px;
+  height: 15px;
+  z-index: 25;
+  border-top:  5px solid #0f0;
+  border-left:  5px solid #0f0;
+  transform-origin: top;
+  transform: translate(-1px, 5px) rotate(15deg) scale(0);
+  transition: transform 0.1s;
+  pointer-events: none;
+  animation: cursor-animate 5s linear infinite;
+}
+
+@keyframes cursor-animate {
+    0%{
+      filter: drop-shadow(0 0 5px #0f0) drop-shadow(0 0 15px #0f0)
+      drop-shadow(0 0 30px #0f0) hue-rotate(60deg);
+    }
+    100%{
+      filter: drop-shadow(0 0 5px #0f0) drop-shadow(0 0 15px #0f0)
+      drop-shadow(0 0 30px #0f0) hue-rotate(60deg);
+    }
+
+}
+
+#cursor::before {
+  content: '';
+  position: absolute;
+  z-index: 25;
+  left: -2.5px;
+  width: 5px;
+  height: 20px;
+  transform-origin: top;
+  transform: rotate(315deg);
+  background: #0f0;
+}
+
+body:hover #cursor{
+  transform: translate(-1px, 5px) rotate(15deg) scale(.65);
+}
+
+.mouse-element{
+  position: absolute;
+  z-index: 25;
+  transform: translate(-50%, -50%);
+  color: #0f0;
+  pointer-events: none;
+  width: 10px;
+  height: 10px;
+  transition: 1s;
+  font-size: 1em;
+  filter: drop-shadow(0 0 5px #0f0) drop-shadow(0 0 25px #0f0) hue-rotate(60deg);
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: rgb(110, 113, 151);
+}
+
+.link-btn{
+  margin-top: 10px;
+  color:white;
+  padding: 1rem 2rem;
+  border: 1px solid white;
+}
+
+#game-bg{
+  background-image: url(./assets/bg.jpeg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-blend-mode: darken;
+}
+
+
+
+.menubtn{
+  color:var(--text-color-btn);
+  text-shadow: 2px 2px rgba(0, 0, 0, .75);
+  position: relative;
+  box-shadow: 0 20px 50px rgb(255 255 255 / 5%);
+  overflow: hidden;
+  box-shadow: none;
+  font-weight: 500;
+  scale: 0.9;
+  font-size: 2vh;
+  background: transparent;
+  transition: box-shadow .4s, background .4s, text-shadow .4s, scale .4s  ;
+  border-radius: 5px;
+}
+
+/* Gloweffect */
+.menubtn:hover {
+  background: #03e9f4;
+  color:#050801;
+  scale: 1;
+  text-shadow: 2px 2px rgba(0, 0, 0,0);
+  box-shadow: 0 0 5px  #03e9f4, 
+              0 0 15px #02e9f4,
+              0 0 30px #02e9f4
+}
+.menubtn span{
+  position:absolute;
+  display: block;
+}
+
+/* Line Animations */
+
+.menubtn span:nth-child(1){
+  top:0;
+  left:-100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #02e9f4);
+  animation: animate1 1s linear infinite;
+}
+
+@keyframes animate1{
+  0% {
+      left: -100%;
+  }
+  50%,100%{
+      left: 100%;
+  }
+}
+
+.menubtn span:nth-child(2){
+  top:-100%;
+  right:0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, #02e9f4);
+  animation: animate2 1s linear infinite;
+  animation-delay:  0.25s;
+
+}
+
+@keyframes animate2{
+  0% {
+      top: -100%;
+  }
+  50%,100%{
+      top: 100%;
+  }
+}
+.menubtn span:nth-child(3){
+  bottom:0;
+  right:-100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(270deg, transparent, #02e9f4);
+  animation: animate3 1s linear infinite;
+  animation-delay:  .5s;
+}
+
+@keyframes animate3{
+  0% {
+      right: -100%;
+  }
+  50%,100%{
+      right: 100%;
+  }
+}
+.menubtn span:nth-child(4){
+  bottom:-100%;
+  left:0;
+  width: 2px;
+  height:100%;
+  background: linear-gradient(360deg, transparent, #02e9f4);
+  animation: animate4 1s linear infinite;
+  animation-delay:  0.75s;
+}
+
+@keyframes animate4{
+  0% {
+      bottom: -100%;
+  }
+  50%,100%{
+      bottom: 100%;
+  }
+}
